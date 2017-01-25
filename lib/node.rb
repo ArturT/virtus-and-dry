@@ -2,11 +2,7 @@ require 'virtus'
 require 'dry-types'
 require 'dry-struct'
 
-module Types
-  include Dry::Types.module
-end
-
-class Item
+class VirtusItem
   include Virtus.value_object
 
   values do
@@ -15,16 +11,30 @@ class Item
   end
 end
 
-#class Item < Dry::Struct
-  #constructor_type(:schema)
-
-  #attribute :name, Types::Strict::String
-  #attribute :value, Types::Strict::Float.optional
-#end
-
-class Node
+class NodeWithVirtusValueObject
   include Virtus.model
 
   attribute :name, String
-  attribute :items, Array[Item]
+  attribute :items, Array[VirtusItem]
+end
+
+
+# Virtus & Dry example
+
+module Types
+  include Dry::Types.module
+end
+
+class DryItem < Dry::Struct
+  constructor_type(:schema)
+
+  attribute :name, Types::Strict::String
+  attribute :value, Types::Strict::Float.optional
+end
+
+class NodeWithDryStruct
+  include Virtus.model
+
+  attribute :name, String
+  attribute :items, Array[DryItem]
 end
