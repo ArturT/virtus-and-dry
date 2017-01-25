@@ -1,4 +1,4 @@
-# virtus with dry-types
+# virtus with dry libs
 
     $ bundle install
     $ rspec spec
