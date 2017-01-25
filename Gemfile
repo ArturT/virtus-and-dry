@@ -6,4 +6,5 @@ gem 'dry-struct'
 
 group :test do
   gem 'rspec'
+  gem 'pry'
 end

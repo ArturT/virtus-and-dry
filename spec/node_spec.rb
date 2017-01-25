@@ -5,7 +5,13 @@ describe Node do
   let(:item_2) { Item.new(name: 'Item B') } # missing value
   let(:items) { [item_1, item_2] }
 
-  let(:node) { Node.new(name: 'Node Name', items: items) }
+  #let(:node) { Node.new(name: 'Node Name', items: items) }
+  let(:node) do
+    Node.new(
+      name: 'Node Name',
+      items: items.map(&:to_h)
+    )
+  end
 
   it { expect(node).to be_kind_of Node }
   it { expect(node.name).to eq 'Node Name' }
