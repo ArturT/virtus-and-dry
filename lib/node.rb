@@ -39,6 +39,8 @@ class ArrayDryItem < Virtus::Attribute
       value.map do |item|
         coerce_item(item)
       end
+    when nil, {}
+      []
     else
       raise "Unknow value type: #{value.inspect}"
     end

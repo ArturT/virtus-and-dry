@@ -26,6 +26,32 @@ shared_examples_for 'node' do
 
   it { expect(node.items[0].value).to eq 1.1 }
   it { expect(node.items[1].value).to be_nil }
+
+  context 'when items=nil' do
+    let(:node) do
+      node_class.new(
+        name: 'Node Name',
+        items: nil
+      )
+    end
+
+    it { expect(node).to be_kind_of node_class }
+    it { expect(node.name).to eq 'Node Name' }
+    it { expect(node.items).to eq [] }
+  end
+
+  context 'when items={} are empty postgres json field' do
+    let(:node) do
+      node_class.new(
+        name: 'Node Name',
+        items: {}
+      )
+    end
+
+    it { expect(node).to be_kind_of node_class }
+    it { expect(node.name).to eq 'Node Name' }
+    it { expect(node.items).to eq [] }
+  end
 end
 
 describe 'Node' do
