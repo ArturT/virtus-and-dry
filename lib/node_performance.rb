@@ -31,7 +31,7 @@ time_me.call -> {
   }
 }
 
-puts 'Init NodeWithVirtusValueObject with many hash as items'
+puts 'Init NodeWithVirtusValueObject with many hashes as items'
 time_me.call -> {
   NODE_WITH_MANY_ITEMS_CREATE_LIMIT.times {
     NodeWithVirtusValueObject.new(name: 'Name', items: hash_items)
@@ -54,7 +54,7 @@ time_me.call -> {
   }
 }
 
-puts 'Init NodeWithDryStruct with many hash as items'
+puts 'Init NodeWithDryStruct with many hashes as items'
 time_me.call -> {
   NODE_WITH_MANY_ITEMS_CREATE_LIMIT.times {
     NodeWithDryStruct.new(name: 'Name', items: hash_items)
